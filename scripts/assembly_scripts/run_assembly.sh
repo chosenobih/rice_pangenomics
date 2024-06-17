@@ -38,19 +38,19 @@ srun -c 100 racon -t 100 ${HiFi} ./${NAME}_hifiasm/${NAME}_HiFi_combined.sam ./$
 ### Now assembly assessment
 ASSEMBLY="${NAME}_hifiasm.combined_racon"
 ASSEMBLY_PATH="./${NAME}_racon"
-BUSCO="eudicots_odb10"
+BUSCO="poales_odb10"
 
 ### Run assembly_stats and BUSCO
-sh ./scripts/assembly_assessment_1.sh ${ASSEMBLY} ${BUSCO} ${ASSEMBLY_PATH}
+sh ./scripts/assembly_scripts/assembly_assessment_1.sh ${ASSEMBLY} ${BUSCO} ${ASSEMBLY_PATH}
 
 ### Run Merqury
 ## May need to edit range for plot
-sh ./scripts/assembly_assessment_2.sh ${ASSEMBLY} ${HiFi} ${ASSEMBLY_PATH}
+sh ./scripts/assembly_scripts/assembly_assessment_2.sh ${ASSEMBLY} ${HiFi} ${ASSEMBLY_PATH}
 
 
 #### Map reads and create coverage plot of assembly. 
 ### May need to edit plotting length requirements for in assembly_assessment_3.sh if outside of range
-sh ./scripts/assembly_assessment_3.sh ${ASSEMBLY} ${HiFi} ${ASSEMBLY_PATH}
+sh ./scripts/assembly_scripts/assembly_assessment_3.sh ${ASSEMBLY} ${HiFi} ${ASSEMBLY_PATH}
 
 ### Files housekeeping
 mv ${NAME}* ${NAME}/
